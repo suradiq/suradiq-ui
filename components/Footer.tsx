@@ -21,6 +21,7 @@ const Footer = () => {
               <li><Link href="/about" className="hover:underline">عن الشركة</Link></li>
               <li><Link href="/terms" className="hover:underline">الشروط والأحكام</Link></li>
               <li><Link href="/privacy-policy" className="hover:underline">سياسة الخصوصية</Link></li>
+              <li><Link href="/donation" className="hover:underline">ساهم معنا</Link></li>
               <li><Link href="/contact" className="hover:underline">اتصل بنا</Link></li>
             </ul>
           </div>
