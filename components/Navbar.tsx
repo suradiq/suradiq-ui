@@ -40,12 +40,17 @@ const Navbar = () => {
 
           {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center gap-3">
+            <Link href="/login">
             <Button className='text-charcoalBlack' variant="outline" size="sm">
               تسجيل الدخول
             </Button>
+            </Link>
+
+            <Link href="/signup">
             <Button size="sm">
               إنشاء حساب
             </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
