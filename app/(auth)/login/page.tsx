@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
@@ -6,9 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import Link from 'next/link';
+import { useLogin } from '@/hooks/useLogin';
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { formData, message, isLoading, handleChange, handleSubmit } = useLogin();
 
   return (
     <div className="min-h-screen w-full flex">
@@ -31,7 +33,7 @@ const LoginPage = () => {
           </div>
 
           {/* Form */}
-          <form className="mt-8 space-y-6">
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-4">
               {/* Email Field */}
               <div>
@@ -42,6 +44,9 @@ const LoginPage = () => {
                   placeholder="your@email.com"
                   className="mt-1"
                   dir="ltr"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                 />
               </div>
 
@@ -55,6 +60,9 @@ const LoginPage = () => {
                     placeholder="••••••••"
                     className="pr-10"
                     dir="ltr"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
                   />
                   <button
                     type="button"
@@ -74,12 +82,13 @@ const LoginPage = () => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <input
-                    id="remember-me"
-                    name="remember-me"
+                    id="rememberMe"
                     type="checkbox"
                     className="h-4 w-4 text-primary border-gray-300 rounded"
+                    checked={formData.rememberMe}
+                    onChange={handleChange}
                   />
-                  <Label htmlFor="remember-me" className="mr-2">
+                  <Label htmlFor="rememberMe" className="mr-2">
                     تذكرني
                   </Label>
                 </div>
@@ -93,8 +102,8 @@ const LoginPage = () => {
             </div>
 
             {/* Submit Button */}
-            <Button type="submit" className="w-full">
-              تسجيل الدخول
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? 'جاري تسجيل الدخول...' : 'تسجيل الدخول'}
             </Button>
 
             {/* Sign Up Link */}
@@ -104,6 +113,11 @@ const LoginPage = () => {
                 إنشاء حساب جديد
               </Link>
             </p>
+
+            {/* Display message */}
+            {message && (
+              <p className="text-center text-sm text-gray-700">{message}</p>
+            )}
           </form>
         </div>
       </div>
