@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface LoginFormData {
-  email: string;
+  user: string;
   password: string;
   rememberMe: boolean;
 }
@@ -10,7 +10,7 @@ interface LoginFormData {
 interface LoginResponse {
   status: 'success' | 'error';
   message: string;
-  token?: string;
+  access_token?: string;
 }
 
 interface UseLoginReturn {
@@ -22,7 +22,7 @@ interface UseLoginReturn {
 }
 
 const initialFormData: LoginFormData = {
-  email: '',
+  user: '',
   password: '',
   rememberMe: false,
 };
@@ -42,10 +42,10 @@ export const useLogin = (): UseLoginReturn => {
   };
 
   const validateForm = (): string | null => {
-    if (!formData.email.trim()) {
+    if (!formData.user.trim()) {
       return 'الرجاء إدخال البريد الإلكتروني';
     }
-    if (!formData.email.includes('@')) {
+    if (!formData.user.includes('@')) {
       return 'الرجاء إدخال بريد إلكتروني صحيح';
     }
     if (!formData.password) {
@@ -73,7 +73,7 @@ export const useLogin = (): UseLoginReturn => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: formData.email,
+          user: formData.user,
           password: formData.password,
         }),
       });
@@ -84,9 +84,9 @@ export const useLogin = (): UseLoginReturn => {
         throw new Error(data.message || 'فشل تسجيل الدخول');
       }
 
-      if (data.status === 'success' && data.token) {
+      if (data.status === 'success' && data.access_token) {
         // Store the token
-        localStorage.setItem('authToken', data.token);
+        localStorage.setItem('token', data.access_token);
         
         // Store remember me preference
         if (formData.rememberMe) {

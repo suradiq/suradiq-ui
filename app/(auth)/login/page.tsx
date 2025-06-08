@@ -37,14 +37,14 @@ const LoginPage = () => {
             <div className="space-y-4">
               {/* Email Field */}
               <div>
-                <Label htmlFor="email">البريد الإلكتروني</Label>
+                <Label htmlFor="user">البريد الإلكتروني</Label>
                 <Input
-                  id="email"
+                  id="user"
                   type="email"
                   placeholder="your@email.com"
                   className="mt-1"
                   dir="ltr"
-                  value={formData.email}
+                  value={formData.user}
                   onChange={handleChange}
                   required
                 />
