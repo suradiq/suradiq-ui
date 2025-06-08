@@ -1,10 +1,40 @@
-import React from 'react';
+'use client'
 import { UserRound, Book, BookOpen, Award, Edit2 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { useProfile } from '@/hooks/useProfile';
 
 const ProfilePage = () => {
+
+  const { profile, isLoading, error } = useProfile();
+
+  if (isLoading) {
+    return <div className="flex justify-center p-8">جاري التحميل...</div>;
+  }
+
+  if (error) {
+    return (
+      <div className="max-w-md mx-auto p-6 bg-red-50 border border-red-200 rounded-lg shadow-sm my-8">
+        <div className="flex items-center gap-3">
+          <div className="flex-shrink-0">
+            <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 className="text-lg font-medium text-red-800">خطأ في تحميل الملف الشخصي</h3>
+        </div>
+        <p className="mt-3 text-red-700">{error.message || "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى."}</p>
+        <button 
+          onClick={() => window.location.reload()} 
+          className="mt-4 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md transition-colors"
+        >
+          إعادة المحاولة
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       {/* Header Section */}
@@ -21,8 +51,8 @@ const ProfilePage = () => {
                   <Edit2 className="w-4 h-4" />
                 </button>
               </div>
-              <h2 className="mt-4 text-2xl font-bold">أحمد محمد</h2>
-              <p className="text-gray-500">@ahmed_m</p>
+              <h2 className="mt-4 text-2xl font-bold">{`${profile?.first_name} ${profile?.last_name}`}</h2>
+              <p className="text-gray-500">{`@${profile?.username}`}</p>
               <p className="mt-2 text-gray-600">قارئ متحمس | عاشق للأدب العربي</p>
               
               <div className="mt-6 w-full grid grid-cols-3 gap-4">
