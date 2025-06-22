@@ -53,7 +53,9 @@ const ProfilePage = () => {
               </div>
               <h2 className="mt-4 text-2xl font-bold">{`${profile?.first_name} ${profile?.last_name}`}</h2>
               <p className="text-gray-500">{`@${profile?.username}`}</p>
-              <p className="mt-2 text-gray-600">قارئ متحمس | عاشق للأدب العربي</p>
+              {profile?.bio && (
+  <p className="mt-2 text-gray-600">{profile.bio}</p>
+)}
               
               <div className="mt-6 w-full grid grid-cols-3 gap-4">
                 <div className="text-center">
