@@ -25,14 +25,6 @@ interface Stats {
     Users 
   } from 'lucide-react';
   import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-  import Hero from '@/components/Hero';
-import FAQSection from '@/components/FAQ';
-import CtaSection from '@/components/CTA';
-import TestimonialSection from '@/components/Testimonial';
-import FeaturesSection from '@/components/Features';
-import HowItWorksSection from '@/components/HowItWorks';
-import LatestAddedBooks from '@/components/LatestAddedBooks';
-import SocialProofSection from '@/components/SocialProof';
   
   const Dashboard: React.FC = () => {
     const stats: Stats = {
@@ -100,14 +92,6 @@ import SocialProofSection from '@/components/SocialProof';
   
     return (
       <div className="p-6 bg-gray-50 min-h-screen">
-        <HeroSection />
-      <SocialProofSection />
-      <LatestAddedBooks />
-      <FeaturesSection />
-      <HowItWorksSection />
-      <TestimonialSection />
-      <CtaSection />
-      <FAQSection />
         {/* Welcome Section */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">مرحباً، عبد الرحمن</h1>
