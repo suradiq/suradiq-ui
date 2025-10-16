@@ -7,18 +7,21 @@ import FAQSection from '../../components/FAQ'
 import CtaSection from '@/components/CTA'
 import FeaturesSection from '@/components/Features'
 import HowItWorksSection from '@/components/HowItWorks'
+import { ComingSoonPage } from '@/components/ComingSoonPage'
 
 function Home() {
   return (
     <>
-      <HeroSection />
+      <ComingSoonPage />
+
+      {/* <HeroSection />
       <SocialProofSection />
       <LatestAddedBooks />
       <FeaturesSection />
       <HowItWorksSection />
       <TestimonialSection />
       <CtaSection />
-      <FAQSection />
+      <FAQSection /> */}
     </>
   )
 }

@@ -71,9 +71,9 @@ export default function RootLayout({
         className={`${notoKufiArabic.variable} font-sans`}
       >
 
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
