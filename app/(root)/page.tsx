@@ -13,15 +13,16 @@ function Home() {
   return (
     <>
       <ComingSoonPage />
-
-      {/* <HeroSection />
+      <div className='hidden'>
+      <HeroSection />
       <SocialProofSection />
       <LatestAddedBooks />
       <FeaturesSection />
       <HowItWorksSection />
       <TestimonialSection />
       <CtaSection />
-      <FAQSection /> */}
+      <FAQSection />
+      </div>
     </>
   )
 }
