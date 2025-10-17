@@ -88,7 +88,7 @@ const OrdersPage = () => {
     }
   ];
 
-  const [orders, setOrders] = useState<Order[]>(sampleOrders);
+  // const [orders, setOrders] = useState<Order[]>(sampleOrders);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [sortField, setSortField] = useState<keyof Order>("date");
